@@ -5,54 +5,78 @@ public class Main {
         System.out.println("=====================================================================================");
     }
 
-    public static void typeAllStaff(Employee[] employees) {
-        for (Employee employee : employees) {
-            System.out.println(employee);
-        }
-    }
-
-    public static void countMinSalary(Employee[] employees) {
-        Employee minSalary = employees[0];
-        for (int i = 0; i < employees.length; i++) {
-            if (minSalary.getEmployeeSalary() > employees[i].getEmployeeSalary()) {
-                minSalary = employees[i];
+    public static void printAllStaff(Employee[] employees) {
+        if (employees == null) {
+            System.out.println("Массив пустой");
+        } else {
+            for (int i = 0; i < employees.length; i++) {
+                System.out.println(employees[i]);
             }
         }
-        System.out.println("Сотрудник с минимальной зарплатой: " + minSalary);
     }
 
-    public static void countMaxSalary(Employee[] employees) {
-        Employee maxSalary = employees[0];
-        for (Employee employee : employees) {
-            if (maxSalary.getEmployeeSalary() < employee.getEmployeeSalary()) {
-                maxSalary = employee;
+    public static void printMinSalary(Employee[] employees) {
+        if (employees == null) {
+            System.out.println("Массив пустой");
+        } else {
+            Employee empWithMinSalary = employees[0];
+            for (int i = 0; i < employees.length; i++) {
+                if (empWithMinSalary.getEmployeeSalary() > employees[i].getEmployeeSalary()) {
+                    empWithMinSalary = employees[i];
+                }
             }
+            System.out.println("Сотрудник с минимальной зарплатой: " + empWithMinSalary);
         }
-        System.out.println("Сотрудник с максимальной зарплатой: " + maxSalary);
     }
 
-    public static void sumSalary(Employee[] employees) {
-        int sum = 0;
-        for (Employee employee : employees) {
-            sum += employee.getEmployeeSalary();
+    public static void printMaxSalary(Employee[] employees) {
+        if (employees == null) {
+            System.out.println("Массив пустой");
+        } else {
+            Employee empWithMaxSalary = employees[0];
+            for (int i = 0; i < employees.length; i++) {
+                if (empWithMaxSalary.getEmployeeSalary() <= employees[i].getEmployeeSalary()) {
+                    empWithMaxSalary = employees[i];
+                }
+            }
+            System.out.println("Сотрудник с максимальной зарплатой: " + empWithMaxSalary);
         }
-        System.out.println("Сумма зарплат за месяц: " + sum);
     }
 
-    public static void averageSalary(Employee[] employees) {
-        int averageSalary = 0;
-        int sum = 0;
-        for (Employee employee : employees) {
-            sum += employee.getEmployeeSalary();
+    public static void printSumSalary(Employee[] employees) {
+        if (employees == null) {
+            System.out.println("Массив пустой");
+        } else {
+            int sum = 0;
+            for (int i = 0; i < employees.length; i++) {
+                sum += employees[i].getEmployeeSalary();
+            }
+            System.out.println("Сумма зарплат за месяц: " + sum);
         }
-        averageSalary = sum / 10;
-        System.out.println("Средняя зарплата: " + averageSalary);
     }
 
-    public static void employeesList(Employee[] employees) {
-        System.out.println("Список сотрудников: ");
-        for (Employee employee : employees) {
-            System.out.println(employee.getEmployeeFullName());
+    public static void printAverageSalary(Employee[] employees) {
+        if (employees == null) {
+            System.out.println("Массив пустой");
+        } else {
+            int averageSalary = 0;
+            int sum = 0;
+            for (int i = 0; i < employees.length; i++) {
+                sum += employees[i].getEmployeeSalary();
+            }
+            averageSalary = sum / employees.length;
+            System.out.println("Средняя зарплата: " + averageSalary);
+        }
+    }
+
+    public static void printEmployeesFullNameList(Employee[] employees) {
+        if (employees == null) {
+            System.out.println("Массив пустой");
+        } else {
+            System.out.println("Список сотрудников: ");
+            for (int i = 0; i < employees.length; i++) {
+                System.out.println(employees[i].getEmployeeFullName());
+            }
         }
     }
 
@@ -70,18 +94,17 @@ public class Main {
         employee[9] = new Employee("Якушев Наум Григорьевич", 5, 200_000);
 
         printSeparator();
-        typeAllStaff(employee);
+        printAllStaff(employee);
         printSeparator();
-        sumSalary(employee);
+        printSumSalary(employee);
         printSeparator();
-        countMinSalary(employee);
+        printMinSalary(employee);
         printSeparator();
-        countMaxSalary(employee);
+        printMaxSalary(employee);
         printSeparator();
-        averageSalary(employee);
+        printAverageSalary(employee);
         printSeparator();
-        employeesList(employee);
+        printEmployeesFullNameList(employee);
         printSeparator();
     }
-
 }
